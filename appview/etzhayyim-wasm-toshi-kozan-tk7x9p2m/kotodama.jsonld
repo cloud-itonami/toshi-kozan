@@ -1,0 +1,191 @@
+{
+  "@context": "https://etzhayyim.com/ns/kotodama/v1",
+  "@id": "did:web:toshi-kozan.etzhayyim.com",
+  "component": {
+    "env": {},
+    "path": "/wasm/component.wasm"
+  },
+  "name": "toshi-kozan",
+  "nanoid": "tk7x9p2m",
+  "performerType": "service",
+  "runtimeType": "worker",
+  "project": "toshi-kozan",
+  "convoSystemPrompt": "You are the Etzhayyim Urban Mining (都市鉱山) controller agent. You orchestrate the end-to-end e-waste recycling pipeline: guide users to collection points, receive items, scan with image recognition, classify materials, plan disassembly, dispatch to robot arms or human workers (hc.etzhayyim.com), appraise recovered materials, and announce achievements. Respond helpfully in the user's language.",
+  "actors": [
+    {
+      "path": "actor:guide",
+      "displayName": "案内 AI",
+      "description": "持込場所・手順・安全指示を案内。maps.etzhayyim.com 連携で最寄り拠点検索",
+      "agentType": "reactive",
+      "capabilities": ["agent.chat", "maps-lookup", "safety-guidance"]
+    },
+    {
+      "path": "actor:collector",
+      "displayName": "回収 AI",
+      "description": "回収拠点管理・出張ピックアップ手配・物流ルート最適化",
+      "agentType": "autonomous",
+      "capabilities": ["depot-management", "pickup-scheduling", "logistics"]
+    },
+    {
+      "path": "actor:receiver",
+      "displayName": "受領 AI",
+      "description": "計量・受領証発行・所有権移転・提供者 DID 記録",
+      "agentType": "autonomous",
+      "capabilities": ["weighing", "receipt-issuance", "ownership-transfer"]
+    },
+    {
+      "path": "actor:eye",
+      "displayName": "画像認識 AI",
+      "description": "外観撮影・Murakumo image inference による素材推定・損傷検出",
+      "agentType": "autonomous",
+      "capabilities": ["image-inference", "material-detection", "damage-assessment"]
+    },
+    {
+      "path": "actor:classifier",
+      "displayName": "分類 AI",
+      "description": "素材分類・グレード判定・下流工程ルーティング (auto/human/refinery)",
+      "agentType": "autonomous",
+      "capabilities": ["material-classification", "grade-assessment", "routing"]
+    },
+    {
+      "path": "actor:disassembler",
+      "displayName": "分解 AI",
+      "description": "BOM 分析・分解工程計画・自動/人間タスク振分け",
+      "agentType": "autonomous",
+      "capabilities": ["bom-analysis", "process-planning", "task-dispatch"]
+    },
+    {
+      "path": "actor:arm",
+      "displayName": "ロボットアーム AI",
+      "description": "自動 pick-and-place・素材別ビン仕分け・IoT 制御",
+      "agentType": "autonomous",
+      "capabilities": ["robotic-control", "pick-place", "bin-sorting"]
+    },
+    {
+      "path": "actor:hcDelegate",
+      "displayName": "HC 委任 AI",
+      "description": "hc.etzhayyim.com へ人間タスク委任・進捗追跡・完了検証",
+      "agentType": "autonomous",
+      "capabilities": ["hc-task-creation", "worker-tracking", "completion-verify"]
+    },
+    {
+      "path": "actor:appraiser",
+      "displayName": "鑑定 AI",
+      "description": "素材価値評価・LME/TOCOM 市場価格連動・CO2 削減量算出",
+      "agentType": "autonomous",
+      "capabilities": ["valuation", "market-price", "co2-calculation"]
+    },
+    {
+      "path": "actor:announcer",
+      "displayName": "告知 AI",
+      "description": "回収実績・キャンペーン告知・社会投稿",
+      "agentType": "reactive",
+      "capabilities": ["social-post", "campaign-notify", "achievement-report"]
+    }
+  ],
+  "governance": {
+    "raci": "responsible",
+    "classification": "internal",
+    "complianceFrameworks": [
+      "etzhayyim-waste-management-policy",
+      "basel-convention",
+      "kaden-recycle-law",
+      "kogata-kaden-recycle-law"
+    ]
+  },
+  "profile": {
+    "displayName": "都市鉱山",
+    "description": "Urban Mining Intelligence — e-waste からの貴金属・レアメタル回収 end-to-end パイプライン (10 actor 協調)",
+    "avatar": "TK",
+    "category": "environment",
+    "isBot": true,
+    "operator": "etzhayyim.com",
+    "agentType": "autonomous",
+    "capabilities": [
+      "guide-navigation",
+      "collection-scheduling",
+      "receipt-issuance",
+      "image-recognition",
+      "material-classification",
+      "disassembly-planning",
+      "robotic-arm-control",
+      "human-task-delegation",
+      "material-appraisal",
+      "campaign-announcement"
+    ]
+  },
+  "triggers": {
+    "subscribeRepos": {
+      "collections": [
+        "app.bsky.feed.post",
+        "com.etzhayyim.apps.toshiKozan.depot",
+        "com.etzhayyim.apps.toshiKozan.pickup",
+        "com.etzhayyim.apps.toshiKozan.receipt",
+        "com.etzhayyim.apps.toshiKozan.imageScan",
+        "com.etzhayyim.apps.toshiKozan.classification",
+        "com.etzhayyim.apps.toshiKozan.disassemblyPlan",
+        "com.etzhayyim.apps.toshiKozan.disassemblyStep",
+        "com.etzhayyim.apps.toshiKozan.armCommand",
+        "com.etzhayyim.apps.toshiKozan.hcTask",
+        "com.etzhayyim.apps.toshiKozan.batch",
+        "com.etzhayyim.apps.toshiKozan.appraisal",
+        "com.etzhayyim.apps.toshiKozan.material",
+        "com.etzhayyim.apps.toshiKozan.waste",
+        "com.etzhayyim.apps.collector.pickup"
+      ]
+    }
+  },
+  "space": {
+    "name": "都市鉱山",
+    "description": "Urban Mining — 素材回収・分析フィード",
+    "joinRule": "public",
+    "historyVisibility": "world-readable",
+    "convos": [
+      {
+        "name": "recovery-feed",
+        "kind": "public",
+        "description": "回収バッチ・素材分析結果フィード",
+        "default": true
+      },
+      {
+        "name": "market-intel",
+        "kind": "public",
+        "description": "素材市場価格・需給インテリジェンス"
+      },
+      {
+        "name": "ops-log",
+        "kind": "internal",
+        "description": "施設オペレーション・アーム稼働ログ"
+      }
+    ]
+  },
+  "derive": {
+    "social": [
+      {
+        "on": "com.etzhayyim.apps.toshiKozan.appraisal",
+        "template": "[都市鉱山] 回収バッチ完了 — {{grade}} grade {{materialName}} {{weightKg}}kg 回収 (市場価値 ¥{{economicValueJpy}}, CO2削減 {{co2SavedKg}}kg)"
+      },
+      {
+        "on": "com.etzhayyim.apps.toshiKozan.receipt",
+        "when": {"weightKg": ">100"},
+        "template": "[都市鉱山] 大口受入: {{wasteCategory}} {{weightKg}}kg を {{depotName}} で受領"
+      }
+    ],
+    "invoke": [
+      {
+        "on": "com.etzhayyim.apps.toshiKozan.hcTask",
+        "when": {"status": "pending"},
+        "target": "did:web:hc.etzhayyim.com",
+        "method": "com.etzhayyim.apps.hc.createTask",
+        "map": {
+          "category": "{{hcCategory}}",
+          "title": "{{title}}",
+          "description": "{{description}}",
+          "difficulty": "{{difficulty}}",
+          "rewardJpy": "{{rewardJpy}}",
+          "projectDid": "did:web:toshi-kozan.etzhayyim.com"
+        }
+      }
+    ]
+  }
+}

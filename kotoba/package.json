@@ -1,0 +1,12 @@
+{
+  "name": "@etzhayyim/toshi-kozan-kotoba",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "kotoba reference implementation of toshi-kozan (都市鉱山 urban-mining public reference: recoverable-material catalog + depot directory + safety guidance + depot-acceptance edges) using @etzhayyim/sdk. Registry on AT PDS (replaces RW graph). (c) mixed split: public reference migrates; the physical recovery pipeline (receipt/ownership custody, robotic disassembly + arm control + hc labor liability, appraisal settlement, Murakumo inference) stays etzhayyim via consent-capability. Substrate posture per ADR-2605172000.",
+  "license": "Apache-2.0",
+  "main": "src/index.ts",
+  "scripts": { "typecheck": "tsc --noEmit", "test": "vitest run" },
+  "dependencies": { "@etzhayyim/sdk": "git+https://github.com/etzhayyim/com-etzhayyim-sdk.git#12314a0cc5ac2feb49dd9789d5c002398acb6988" },
+  "devDependencies": { "@etzhayyim/sdk-mock": "git+https://github.com/etzhayyim/com-etzhayyim-sdk-mock.git#c857ff9be5310bf433bfe1e8d3c0f677e213d667", "typescript": "^5.6.0", "vitest": "^4.1.0" }
+}

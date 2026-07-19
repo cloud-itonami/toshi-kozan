@@ -1,0 +1,44 @@
+{
+  "name": "kotodama-tk7x9p2m",
+  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-03-17",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "nodejs_als"
+  ],
+  "vars": {
+    "APP_CAPABILITIES": "[\"guide-navigation\",\"collection-scheduling\",\"receipt-issuance\",\"image-recognition\",\"material-classification\",\"disassembly-planning\",\"robotic-arm-control\",\"human-task-delegation\",\"material-appraisal\",\"campaign-announcement\"]",
+    "APP_DESCRIPTION": "Urban Mining Intelligence — e-waste からの貴金属・レアメタル回収 end-to-end パイプライン (10 actor 協調)",
+    "APP_DISPLAY_NAME": "都市鉱山",
+    "APP_EMBED_URL": "https://tk7x9p2m.etzhayyim.com/?embed=1",
+    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_NANOID": "tk7x9p2m",
+    "APP_PERFORMER_TYPE": "service",
+    "APP_UI_TYPE": "appview",
+    "AGENTGATEWAY_MCP_ROUTER_URL": "https://mcp.etzhayyim.com/xrpc/com.etzhayyim.mcp.message"
+  },
+  "rules": [
+    {
+      "type": "CompiledWasm",
+      "globs": [
+        "**/*.wasm"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "tk7x9p2m.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    },
+    {
+      "pattern": "toshi-kozan.etzhayyim.com/*",
+      "zone_name": "etzhayyim.com"
+    }
+  ],
+  "assets": {
+    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

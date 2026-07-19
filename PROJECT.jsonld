@@ -1,0 +1,41 @@
+{
+  "@context": [
+    "https://schema.org/",
+    {
+      "etzhayyim": "https://etzhayyim.com/schemas/",
+      "capabilities": "etzhayyim:capabilities",
+      "actors": "etzhayyim:actors"
+    }
+  ],
+  "@type": "SoftwareApplication",
+  "identifier": "etzhayyim-project-toshi-kozan",
+  "name": "toshi-kozan.etzhayyim.com",
+  "description": "都市鉱山 (Urban Mining) Intelligence — e-waste からの貴金属・レアメタル・レアアース回収 end-to-end パイプライン (10 actor 協調: 案内→回収→受領→画像認識→分類→分解→ロボットアーム/HC→鑑定→告知)",
+  "applicationCategory": "EnvironmentalManagement",
+  "url": "https://toshi-kozan.etzhayyim.com",
+  "actors": [
+    {"@type": "DefinedTerm", "name": "guide", "description": "案内 AI — 持込場所・手順・安全指示"},
+    {"@type": "DefinedTerm", "name": "collector", "description": "回収 AI — 拠点管理・ピックアップ手配"},
+    {"@type": "DefinedTerm", "name": "receiver", "description": "受領 AI — 計量・受領証発行・所有権移転"},
+    {"@type": "DefinedTerm", "name": "eye", "description": "画像認識 AI — 外観撮影・素材推定・損傷検出"},
+    {"@type": "DefinedTerm", "name": "classifier", "description": "分類 AI — 素材分類・グレード判定"},
+    {"@type": "DefinedTerm", "name": "disassembler", "description": "分解 AI — BOM 分析・分解工程計画"},
+    {"@type": "DefinedTerm", "name": "arm", "description": "ロボットアーム AI — 自動 pick-and-place・仕分け"},
+    {"@type": "DefinedTerm", "name": "hcDelegate", "description": "HC 委任 AI — hc.etzhayyim.com 人間タスク委任"},
+    {"@type": "DefinedTerm", "name": "appraiser", "description": "鑑定 AI — 素材価値評価・市場価格連動"},
+    {"@type": "DefinedTerm", "name": "announcer", "description": "告知 AI — 回収実績・キャンペーン告知"}
+  ],
+  "capabilities": {
+    "@type": "DefinedTermSet",
+    "terms": [
+      {"@type": "DefinedTerm", "name": "guide-navigation", "description": "最寄り回収拠点の案内・安全取扱い指示"},
+      {"@type": "DefinedTerm", "name": "collection-scheduling", "description": "出張回収ピックアップのスケジューリング"},
+      {"@type": "DefinedTerm", "name": "image-recognition", "description": "e-waste 画像認識による素材推定・損傷検出"},
+      {"@type": "DefinedTerm", "name": "material-classification", "description": "素材分類・グレード判定・下流工程ルーティング"},
+      {"@type": "DefinedTerm", "name": "disassembly-planning", "description": "BOM ベース分解工程計画・自動/人間振分け"},
+      {"@type": "DefinedTerm", "name": "robotic-arm-control", "description": "ロボットアーム pick-and-place・ビン仕分け"},
+      {"@type": "DefinedTerm", "name": "human-task-delegation", "description": "hc.etzhayyim.com への精密分解・危険物処理タスク委任"},
+      {"@type": "DefinedTerm", "name": "material-appraisal", "description": "素材価値評価・LME/TOCOM 市場価格連動・CO2 削減量算出"}
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "etzhayyim-wasm-toshi-kozan-tk7x9p2m",
+  "version": "1.0.0",
+  "description": "TS-native runtime component",
+  "main": "src/app.ts",
+  "scripts": {
+    "test": "echo \"no tests\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@etzhayyim/kotodama-host-sdk": "workspace:*"
+  }
+}
