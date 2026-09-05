@@ -1,6 +1,6 @@
 {
   "name": "kotodama-tk7x9p2m",
-  "main": "svelte/.svelte-kit/cloudflare/_worker.js",
+  "main": "./src/app.ts",
   "compatibility_date": "2025-03-17",
   "compatibility_flags": [
     "nodejs_compat",
@@ -11,7 +11,7 @@
     "APP_DESCRIPTION": "Urban Mining Intelligence — e-waste からの貴金属・レアメタル回収 end-to-end パイプライン (10 actor 協調)",
     "APP_DISPLAY_NAME": "都市鉱山",
     "APP_EMBED_URL": "https://tk7x9p2m.etzhayyim.com/?embed=1",
-    "APP_FRAMEWORK": "sveltekit-edge-bff",
+    "APP_FRAMEWORK": "shadow-cljs-edge-bff",
     "APP_NANOID": "tk7x9p2m",
     "APP_PERFORMER_TYPE": "service",
     "APP_UI_TYPE": "appview",
@@ -36,7 +36,7 @@
     }
   ],
   "assets": {
-    "directory": "./svelte/.svelte-kit/cloudflare/client",
+    "directory": "../../web/dist",
     "binding": "ASSETS",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
