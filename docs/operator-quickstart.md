@@ -44,7 +44,7 @@ cd toshi-kozan
 ```
 
 west 管理下なら `orgs/cloud-itonami/toshi-kozan`。共有 checkout を直接編集せず
-worktree を切ること（superproject の CLAUDE.md「並行エージェント運用」）。
+worktree を切ること（superproject の AGENTS.md「並行エージェント運用」）。
 
 ## 2. kotoba — 実装本体を動かす
 
@@ -109,7 +109,7 @@ npm install --no-audit --no-fund
 node <superproject>/scripts/resource-guard.mjs run build -- npm run build
 ```
 
-**superproject の中では build を直接起動しない**（resource-guard 経由。CLAUDE.md の
+**superproject の中では build を直接起動しない**（resource-guard 経由。AGENTS.md の
 repo-wide resource governor）。最後の 2 行が成功のしるし:
 
 ```
@@ -141,7 +141,7 @@ pkill -f "vite preview --port 4319"
 
 ```
 GET  /                 -> 200
-GET  /health           -> 404      ← CLAUDE.md が health として案内する経路。存在しない
+GET  /health           -> 404      ← AGENTS.md が health として案内する経路。存在しない
 GET  /_app/meta        -> 404      ← 同上
 GET  /xrpc/x.y.z       -> 405      ← POST と OPTIONS だけ export されている
 OPTIONS /xrpc/x.y.z    -> 204      ← CORS preflight
@@ -154,7 +154,7 @@ POST /xrpc/x.y.z       -> 500      ← 上流 MCP router が NXDOMAIN（§7）�
 
 ## 5. `src/app.ts` が deploy されないことを確かめる
 
-`appview/…/src/app.ts` は 26,734 バイトで、`CLAUDE.md` の 15 コマンドと 10 actor を
+`appview/…/src/app.ts` は 26,734 バイトで、`AGENTS.md` の 15 コマンドと 10 actor を
 実装している唯一のファイルである。**build 出力に入らない。**
 
 ```bash
@@ -318,7 +318,7 @@ did:web:etzhayyim.com -> 200
   （`find . -name '*.wasm'` → 0 件）。
 
 **DNS と route を立てるのは owner の判断**なので、ここでは現在地の記録にとどめる。
-`CLAUDE.md` の「Build & Deploy」節にある `etzhayyim deploy` はこの repo に存在しない。
+`AGENTS.md` の「Build & Deploy」節にある `etzhayyim deploy` はこの repo に存在しない。
 
 ## 8. スコア計器を読むときの注意
 
