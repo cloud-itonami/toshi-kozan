@@ -2,7 +2,7 @@
 
 **この repo が持っているのは「どこに出せて・どう安全に扱い・何が回収できるか」という
 公開参照面だけである。** e-waste を実際に受け取り、撮影し、分解し、鑑定する物理パイプラインは
-ここには無い。名前（都市鉱山）と `CLAUDE.md` の 10 actor 図はパイプライン全体を指すので、
+ここには無い。名前（都市鉱山）と `AGENTS.md` の 10 actor 図はパイプライン全体を指すので、
 **この境界を最初に書いておく。**
 
 正本の宣言は `kotoba/src/types.ts` の冒頭 docblock（migration の判断を書いた場所）で、
@@ -49,14 +49,14 @@ SvelteKit + `@sveltejs/adapter-cloudflare`。**build して preview で実測し
 
 ---
 
-## 実際には無いもの（`CLAUDE.md` が書いているが、この repo では成立しない）
+## 実際には無いもの（`AGENTS.md` が書いているが、この repo では成立しない）
 
-`CLAUDE.md`（16 KB）は 10 actor・15 XRPC コマンド・heartbeat・derive rule を詳細に記述する。
+`AGENTS.md`（16 KB）は 10 actor・15 XRPC コマンド・heartbeat・derive rule を詳細に記述する。
 **それは意図の記録として価値があるので消していない。ただし次の 4 点は実測で成立しなかった。**
 
 ### 1. `appview/…/src/app.ts` は deploy されない
 
-26,734 バイトあり、`CLAUDE.md` の 15 コマンドを実装しているのはこのファイルだが、
+26,734 バイトあり、`AGENTS.md` の 15 コマンドを実装しているのはこのファイルだが、
 `wrangler.jsonc` の `main` は `svelte/.svelte-kit/cloudflare/_worker.js`（SvelteKit の生成物）であって
 `src/app.ts` ではない。build 後の `.svelte-kit/` tree に対し:
 
@@ -75,7 +75,7 @@ SvelteKit + `@sveltejs/adapter-cloudflare`。**build して preview で実測し
 
 ### 3. `/health` と `/_app/meta` は無い
 
-`CLAUDE.md` の「Build & Deploy」節は `Health: https://tk7x9p2m.etzhayyim.com/health` と
+`AGENTS.md` の「Build & Deploy」節は `Health: https://tk7x9p2m.etzhayyim.com/health` と
 `Meta: …/_app/meta` を挙げるが、配信される handler にこの 2 経路は無い。
 preview 実測で **どちらも 404**。この 2 つは `src/app.ts` 側（`createWorkerExport`）の
 機能であって、deploy される tree には入らない。同節の `etzhayyim deploy` コマンドも
